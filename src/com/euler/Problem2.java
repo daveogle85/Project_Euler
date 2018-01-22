@@ -8,6 +8,17 @@ public class Problem2 {
      * By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
      */
     public int run() {
-        return 0;
+        int limit = 4000000;
+        return fibonacci(limit, 0,1);
+    }
+
+    public int fibonacci(int limit, int firstTerm, int secondTerm) {
+        if(firstTerm + secondTerm > limit) {
+            return (firstTerm + secondTerm % 2 == 0) ? firstTerm + secondTerm : 0;
+        }
+        if((firstTerm + secondTerm) % 2 == 0) {
+            return firstTerm + secondTerm + fibonacci(limit, secondTerm, firstTerm + secondTerm);
+        }
+        return fibonacci(limit, secondTerm, firstTerm + secondTerm);
     }
 }
